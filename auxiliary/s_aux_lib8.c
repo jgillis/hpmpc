@@ -45,14 +45,18 @@ void s_zeros(float **pA, int row, int col)
 /* creates a zero matrix aligned to a cache line */
 void s_zeros_align(float **pA, int row, int col)
 	{
+#if defined(OS_WINDOWS)
+	*pA = (double *) _aligned_malloc( (row*col)*sizeof(float), 64 );
+#else
 	void *temp;
 	int err = posix_memalign(&temp, 64, (row*col)*sizeof(float));
 	if(err!=0)
 		{
-		printf("Memory allocation error");
+		printf("Memory allocation error\n");
 		exit(1);
 		}
 	*pA = temp;
+#endif
 	float *A = *pA;
 	int i;
 	for(i=0; i<row*col; i++) A[i] = 0.0;
