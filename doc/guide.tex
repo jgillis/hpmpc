@@ -315,7 +315,8 @@ Output: it returns $\begin{bmatrix} ||r_q||_\infty & ||r_b||_\infty & ||r_d||_\i
 Output: it returns the Lagrangian multipliers of the equality constraints.
 
 \item[\tt mult\_lam] Vector of size $2(n_b+n_g)N + 2(n_b+n_{gN})$.
-Output: it returns the Lagrangian multipliers of the inequality constraints.
+Output: it returns the Lagrangian multipliers of the inequality constraints, corresponding to: \\
+$\begin{bmatrix} (u^l_0)^T & (u^u_0)^T & (d^l_0)^T & (d^u_0)^T & (u^l_1)^T & (x^l_1)^T & (u^u_1)^T & (x^u_1)^T & (d^l_1)^T & (d^u_1)^T \ldots \end{bmatrix}^T  $.
 
 \item[\tt mult\_t] Vector of size $2(n_b+n_g)N + 2(n_b+n_{gN})$.
 Output: it returns the slack variables associated with Lagrangian multipliers of the inequality constraints.
